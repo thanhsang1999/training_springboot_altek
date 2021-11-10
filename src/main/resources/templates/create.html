@@ -1,10 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="/fragments/head"></div>
 <body>
-
+<div th:replace="/fragments/header"></div>
+<!--  content start-->
+<div class="create-container">
+  <div class="title"><h1 th:text="#{createStudent}">Tạo mới sinh viên</h1></div>
+  <form th:action="@{/student/save}" th:object="${studentDTO}" method="post">
+    <div class="item" th:if="${studentDTO.getId()}!=null">
+      <span th:text="ID"></span>
+      <span th:text="${studentDTO.getId()}"></span>
+      <input type="hidden" th:field="*{id}"/>
+    </div>
+    <div class="item">
+      <span th:text="#{nameVN}"></span>
+      <input type="text" th:field="*{nameVN}" />
+    </div>
+<!--    <p th:if="${#fields.hasErrors('nameVN')}" th:errors="*{nameVN}">NameVN Error</p>-->
+    <div class="item">
+      <span th:text="#{nameEN}"></span>
+      <input type="text" th:field="*{nameEN}" />
+    </div>
+<!--    <p th:if="${#fields.hasErrors('nameEN')}" th:errors="*{nameEN}">nameEN Error</p>-->
+    <div class="item">
+      <span th:text="#{mssv}"></span>
+      <input type="text" th:field="*{mssv}" />
+    </div>
+<!--    <p th:if="${#fields.hasErrors('mssv')}" th:errors="*{mssv}">mssv Error</p>-->
+    <div class="item">
+      <span th:text="#{birthday}"></span>
+      <input type="date" th:field="*{birthday}" />
+    </div>
+<!--    <p th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}">birthday Error</p>-->
+    <button type="submit" th:text="#{submit}"></button>
+  </form>
+</div>
+<!--    content end  -->
+<div th:replace="/fragments/script"></div>
 </body>
 </html>

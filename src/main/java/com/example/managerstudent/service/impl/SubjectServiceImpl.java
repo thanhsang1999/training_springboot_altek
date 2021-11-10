@@ -1,8 +1,9 @@
 package com.example.managerstudent.service.impl;
 
+import com.example.managerstudent.dto.StudentDTO;
 import com.example.managerstudent.dto.SubjectDTO;
 import com.example.managerstudent.entities.SubjectEntity;
-import com.example.managerstudent.repository.ISubjectReponsitory;
+import com.example.managerstudent.repository.ISubjectRepository;
 import com.example.managerstudent.service.ISubjectService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import java.util.stream.Collectors;
 @Service
 public class SubjectServiceImpl implements ISubjectService {
     @Autowired
-    ISubjectReponsitory subjectReponsitory;
+    ISubjectRepository subjectReponsitory;
     @Autowired
     ModelMapper mapper;
 
@@ -39,6 +40,9 @@ public class SubjectServiceImpl implements ISubjectService {
     public SubjectDTO save(SubjectDTO dto) {
         SubjectEntity entity = mapper.map(dto, SubjectEntity.class);
         SubjectEntity subjectEntity = subjectReponsitory.save(entity);
+
+
+
         return  mapper.map(subjectEntity, SubjectDTO.class);
     }
 
@@ -48,5 +52,16 @@ public class SubjectServiceImpl implements ISubjectService {
         return  mapper.map(subjectEntity, SubjectDTO.class);
     }
 
+    @Override
+    public List<SubjectDTO> findAllByIdStudent(Long idStudent) {
+        List<SubjectDTO> dto = null;
+        List<SubjectEntity> subjectEntities = subjectReponsitory.findAllByIdStudent(idStudent);
+        dto = subjectEntities.stream().map(e->mapper.map(e,SubjectDTO.class)).collect(Collectors.toList());
+        return dto;
+    }
 
+    @Override
+    public void deleteById(Long id) {
+        subjectReponsitory.deleteById(id);
+    }
 }

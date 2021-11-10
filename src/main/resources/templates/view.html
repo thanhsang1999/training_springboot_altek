@@ -1,10 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="/fragments/head"></div>
 <body>
+<div th:replace="/fragments/header"></div>
+<!--  content start-->
+<div class="content-view-student">
+  <div class="title">
+    <h1>Chi tiết sinh viên</h1>
+  </div>
+  <div class="info-student-container">
+    <div class="item"><span>ID</span> <span>1</span></div>
+    <div class="item">
+      <span>Tên</span>
+      <div th:switch="${#locale.language}" th:remove="tag">
+        <span th:case="'vi'" th:text="${student.getNameVN()}" ></span>
+        <span th:case="'en'" th:text="${student.getNameEN()}" ></span>
+      </div>
+      <!--          <span th:text="${student.getNameVN()}">Nguyễn Huy Thành Sang</span>-->
+    </div>
+    <div class="item"><span th:text="#{mssv}">MSSV</span> <span th:text="${student.getMssv()}">000000</span></div>
+    <div class="item"><span th:text="#{birthday}">Ngày Sinh</span> <span th:text="${student.getBirthday()}">22/06/1999</span></div>
 
+    <div class="button-container">
+      <a th:href="@{/student/{id}/subject/add(id=${student.getId()})}"><button th:text="#{createSubject}"></button></a>
+
+    </div>
+  </div>
+  <div class="list-subject-container">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th th:text="#{nameSubject}">Tên Khóa Học</th>
+        <th th:text="#{update}">Cập nhật Khóa Học</th>
+        <th th:text="#{delete}">Xóa Khóa Học</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="subject : ${student.getListSubject()}">
+        <td scope="row" th:text="${subject.getId()}"></td>
+        <td th:text="${subject.getName()}"></td>
+        <td><a th:href="@{/subject/update/{id}(id=${subject.getId()})}" th:text="#{update}"></a> </td>
+        <td><a th:href="@{/subject/delete/{id}(id=${subject.getId()})}" th:text="#{delete}"></a> </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!--    content end  -->
+<div th:replace="/fragments/script"></div>
 </body>
 </html>

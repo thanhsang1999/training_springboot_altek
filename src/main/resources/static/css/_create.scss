@@ -1,0 +1,21 @@
+.create-container{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    form{
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        .item{
+            margin-block: 10px;
+        }
+        .button-container{
+            margin-top: 15px;
+            display: flex;
+            flex-flow: row;
+            button{
+                margin-right: 15px;
+            }   
+        }
+    }
+}

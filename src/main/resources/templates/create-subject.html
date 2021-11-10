@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="/fragments/head"></div>
+<body>
+<div th:replace="/fragments/header"></div>
+<!--  content start-->
+<div class="create-container">
+  <div class="title"><h1 th:text="#{createSubject}">Tạo mới sinh viên</h1></div>
+  <form th:action="@{/subject/save}" th:object="${subject}" method="post">
+    <div class="item" th:if="${subject.getId()!=null}">
+      <span th:text="ID"></span>
+      <span th:text="${subject.getId()}"></span>
+    </div>
+    <div class="item">
+      <span th:text="#{nameSubject}"></span>
+      <input type="text" th:field="*{name}" />
+    </div>
+
+    <input type="hidden" th:field="*{id}" />
+    <input type="hidden" th:field="*{idStudent}" />
+   <div class="button-container">
+     <button class="button-back" th:text="#{back}"></button>
+     <button type="submit" th:text="#{submit}"></button>
+   </div>
+  </form>
+</div>
+<!--    content end  -->
+<div th:replace="/fragments/script"></div>
+</body>
+</html>

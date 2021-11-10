@@ -15,4 +15,8 @@ public interface ISubjectService {
     SubjectDTO save(SubjectDTO dto);
 
     SubjectDTO findByName(String name);
+
+    List<SubjectDTO> findAllByIdStudent(Long idStudent);
+
+    void deleteById(Long id);
 }

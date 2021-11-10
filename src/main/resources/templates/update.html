@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="/fragments/head"></div>
 <body>
+<div th:replace="/fragments/header"></div>
+<!--  content start-->
+<div class="create-container">
+    <div class="title"><h1>Cập nhật thông tin sinh viên</h1></div>
+    <form>
 
+        <div class="item">
+            <span>ID</span>
+            <input type="text" />
+        </div>
+        <div class="item">
+            <span>Tên Đầu</span>
+            <input type="text" />
+        </div>
+        <div class="item">
+            <span>Tên Cuối</span>
+            <input type="text" />
+        </div>
+        <div class="item">
+            <span>MSSV</span>
+            <input type="text" />
+        </div>
+        <div class="item">
+            <span>Ngày Sinh</span>
+            <input type="date" />
+        </div>
+    </form>
+</div>
+<!--    content end  -->
+<div th:replace="/fragments/script"></div>
 </body>
 </html>

@@ -9,9 +9,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface IStudentReponsitory extends JpaRepository<StudentEntity, Long> {
+public interface IStudentRepository extends JpaRepository<StudentEntity, Long> {
     Optional<StudentEntity> findById(Long id);
     StudentEntity save(StudentEntity student);
-    StudentEntity findByFullName(String fullName);
     Page<StudentEntity> findAll(Pageable pageable);
+    Page<StudentEntity> findAllByName(String name,Pageable pageable);
+    void deleteById(Long id);
 }

@@ -9,7 +9,12 @@ import java.time.format.DateTimeFormatter;
 @Configuration
 public class DateTimeFormatterConfig {
     @Bean(name = "dateTimeFormatterVN")
-    public DateTimeFormatter dateTimeFormatter(){
+    public DateTimeFormatter dateTimeFormatterVN(){
         return DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
     }
+    @Bean(name = "dateTimeFormatter")
+    public DateTimeFormatter dateTimeFormatter(){
+        return DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    }
+
 }

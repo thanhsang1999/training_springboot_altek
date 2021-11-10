@@ -1,0 +1,27 @@
+.content-view-student{
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    &>.title{
+        &>h1{
+            font-size: 30px;
+        }
+    }
+    &>.info-student-container{
+        &>.item{
+            font-weight: bold;
+            span:first-of-type{
+                margin-right: 20px;
+            }
+        }
+        .button-container{
+            margin-top: 15px;
+        }
+    }
+    &>.list-subject-container{
+        margin-top: 50px;
+        a{
+            color: rgb(28, 112, 238);
+        }
+    }
+}

@@ -7,8 +7,8 @@ import java.util.List;
 @Data
 public class StudentDTO {
     private Long id;
-    private String firstName;
-    private String lastName;
+    private String nameVN;
+    private String nameEN;
     private int mssv;
     private String birthday;
     private List<SubjectDTO> listSubject;
